@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="@string/home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:color="#44A6F4"
+        />
+
+    <item
+        android:id="@+id/search"
+        android:title="@string/search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:color="#D463F4"
+        />
+    <item
+        android:id="@+id/add"
+        android:title="@string/add"
+        android:icon="@drawable/ic_icons8_add_24"
+        android:color="#F3276C"
+        />
+    <item
+        android:id="@+id/notif"
+        android:title="@string/notif"
+        android:icon="@drawable/ic_icons8_notification_50"
+        android:color="#F84235"
+        />
+    <item
+        android:id="@+id/profile"
+        android:title="@string/profile"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:color="#F30AC0"
+        />
+<!--    -->
+<!--    -->
+<!--    -->
+<!--    -->
+<!--    -->
+</menu>
