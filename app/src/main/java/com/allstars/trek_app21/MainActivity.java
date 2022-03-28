@@ -1,9 +1,11 @@
 package com.allstars.trek_app21;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 
 import com.allstars.trek_app21.databinding.ActivityMainBinding;
+import com.google.android.material.navigation.NavigationBarView;
 
 import io.ak1.BubbleTabBar;
 import io.ak1.OnBubbleClickListener;
@@ -27,34 +30,43 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction homeTrans = getSupportFragmentManager().beginTransaction();
         homeTrans.replace(R.id.content,new HomeFragment());
         homeTrans.commit();
+        // To open Home page as a default page.
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content, new HomeFragment());
+        transaction.commit();
 
-        binding.bottomNav.addBubbleListener(i -> {
-            Toast.makeText(this, "hello"+ String.valueOf(i), Toast.LENGTH_SHORT).show();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                switch (i){
-                    case 2131230928:
-                        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
-                        transaction.replace(R.id.content,new HomeFragment());
+        binding.bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+                switch (item.getItemId()){
+                    case R.id.home:
+                        fragmentTransaction.replace(R.id.content, new HomeFragment());
                         break;
-                    case 2131231081:
-                        Toast.makeText(this, "search", Toast.LENGTH_SHORT).show();
-                        transaction.replace(R.id.content,new SearchFragment());
+
+                    case R.id.notif:
+                        transaction.replace(R.id.content, new NotifFragment());
                         break;
-                    case 2131230791:
-                        Toast.makeText(this, "add", Toast.LENGTH_SHORT).show();
-                        transaction.replace(R.id.content,new AddFragment());
+
+                    case R.id.add:
+                        fragmentTransaction.replace(R.id.content, new AddFragment());
                         break;
-                    case 2131231033:
-                        Toast.makeText(this, "notif", Toast.LENGTH_SHORT).show();
-                        transaction.replace(R.id.content,new NotifFragment());
+
+                    case R.id.search:
+                        fragmentTransaction.replace(R.id.content, new SearchFragment());
                         break;
-                    case 2131231057:
-                        Toast.makeText(this, "profile", Toast.LENGTH_SHORT).show();
-                        transaction.replace(R.id.content,new ProfileFragment());
+
+                    case R.id.profile:
+                        transaction.replace(R.id.content, new ProfileFragment());
                         break;
                 }
-                transaction.commit();
+                fragmentTransaction.commit();
+                return true;
+            }
         });
+//
 
 
     }
