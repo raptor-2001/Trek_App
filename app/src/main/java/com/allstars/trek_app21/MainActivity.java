@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Toast;
 
+
 import com.allstars.trek_app21.databinding.ActivityMainBinding;
 
 import io.ak1.BubbleTabBar;
@@ -28,21 +29,27 @@ public class MainActivity extends AppCompatActivity {
         homeTrans.commit();
 
         binding.bottomNav.addBubbleListener(i -> {
+            Toast.makeText(this, "hello"+ String.valueOf(i), Toast.LENGTH_SHORT).show();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 switch (i){
-                    case 2131230925:
+                    case 2131230928:
+                        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
                         transaction.replace(R.id.content,new HomeFragment());
                         break;
-                    case 2131231076:
+                    case 2131231081:
+                        Toast.makeText(this, "search", Toast.LENGTH_SHORT).show();
                         transaction.replace(R.id.content,new SearchFragment());
                         break;
-                    case 2131230790:
+                    case 2131230791:
+                        Toast.makeText(this, "add", Toast.LENGTH_SHORT).show();
                         transaction.replace(R.id.content,new AddFragment());
                         break;
-                    case 2131231029:
+                    case 2131231033:
+                        Toast.makeText(this, "notif", Toast.LENGTH_SHORT).show();
                         transaction.replace(R.id.content,new NotifFragment());
                         break;
-                    case 2131231053:
+                    case 2131231057:
+                        Toast.makeText(this, "profile", Toast.LENGTH_SHORT).show();
                         transaction.replace(R.id.content,new ProfileFragment());
                         break;
                 }
