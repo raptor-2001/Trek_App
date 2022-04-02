@@ -1,6 +1,8 @@
 package com.allstars.trek_app21;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -15,15 +17,21 @@ import android.widget.Toast;
 import com.allstars.trek_app21.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.Objects;
+
 import io.ak1.BubbleTabBar;
 import io.ak1.OnBubbleClickListener;
 
 public class MainActivity extends AppCompatActivity {
-    
+
+
     ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        Objects.requireNonNull(getSupportActionBar()).hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -47,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.notif:
-                        transaction.replace(R.id.content, new NotifFragment());
+                        fragmentTransaction.replace(R.id.content, new NotifFragment());
                         break;
 
                     case R.id.add:
@@ -59,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.profile:
-                        transaction.replace(R.id.content, new ProfileFragment());
+                        fragmentTransaction.replace(R.id.content, new ProfileFragment());
                         break;
                 }
                 fragmentTransaction.commit();
